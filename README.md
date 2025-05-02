@@ -1,8 +1,8 @@
 <h1 align="center">northstar-dedicated</h1>
 
-**Docker image for the [Northstar](https://northstar.tf) dedicated server.** <a href="https://github.com/pg9182/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/pg9182/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
+**Docker image for [Northstar Frontier Defense](https://github.com/Zanieon/NorthstarMods/tree/gamemode_fd_experimental).** <a href="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
 
-[`ghcr.io/pg9182/northstar-dedicated:1-tf2.0.11.0`](https://ghcr.io/pg9182/northstar-dedicated)
+[`ghcr.io/NekoUwUGamerfnf/northstar-dedicated:1-tf2.0.11.0`](https://ghcr.io/NekoUwUGamerfnf/northstar-dedicated)
 
 ## Features
 
@@ -463,7 +463,7 @@ version: "3.9"
 
 services:
   northstar1:
-    image: ghcr.io/pg9182/northstar-dedicated:1-tf2.0.11.0
+    image: ghcr.io/NekoUwUGamerfnf/northstar-dedicated:1-tf2.0.11.0
     pull_policy: always
     environment:
       - NS_PORT=37015
@@ -499,7 +499,7 @@ x-logging:
 services:
   northstar1:
     << : *logging
-    image: ghcr.io/pg9182/northstar-dedicated:1-tf2.0.11.0-ns1.6.3
+    image: ghcr.io/NekoUwUGamerfnf/northstar-dedicated:1-tf2.0.11.0
     pull_policy: always
     environment:
       - NS_PORT=37015
