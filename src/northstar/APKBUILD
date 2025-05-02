@@ -27,5 +27,5 @@ package() {
 	cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
 }
 sha512sums="
-2819013c8d55e5a5702b7f55a8b93397a448a7e0b7c1e58954ac1345a4199f5ddb0557bd6cc66002d9780d600463b50368bb9dfb10425aab14dec51b63a7b022  Northstar.release.v$pkgver.zip
+ea58cc8a8cd1b51c1c5ca3fe071031ca1abc1cf0e18d4b157425368dd19ec4d625dce631145b276d6a7968d005e6c51e1d10a6b65663b90e2998847331a7d8ed  Northstar.release.v$pkgver.zip
 "
