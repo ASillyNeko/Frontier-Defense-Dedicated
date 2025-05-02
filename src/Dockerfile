@@ -4,6 +4,7 @@ FROM alpine:3.15.4 AS base
 
 FROM base AS build
 RUN apk update && apk add alpine-sdk sudo
+RUN apk add jq
 RUN adduser -Dh /nsbuild nsbuild && \
     adduser nsbuild abuild && \
     echo 'nsbuild ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/nsbuild
