@@ -1,6 +1,6 @@
 <h1 align="center">northstar-dedicated</h1>
 
-**Docker image for [Northstar Frontier Defense](https://github.com/Zanieon/NorthstarMods/tree/gamemode_fd_experimental).** <a href="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
+**Docker image for [Frontier Defense](https://github.com/Zanieon/NorthstarMods/tree/gamemode_fd_experimental).** <a href="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
 
 [`ghcr.io/nekouwugamerfnf/northstar-dedicated:1-tf2.0.11.0`](https://ghcr.io/NekoUwUGamerfnf/northstar-dedicated)
 
