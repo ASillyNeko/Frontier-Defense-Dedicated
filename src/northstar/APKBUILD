@@ -1,6 +1,6 @@
 # Maintainer: pg9182 <96569817+pg9182@users.noreply.github.com>
 pkgname=northstar
-pkgver=latest
+pkgver=vlatest
 pkgver_tf=latest
 pkgrel=0
 pkgdesc="Northstar binaries and mods"
