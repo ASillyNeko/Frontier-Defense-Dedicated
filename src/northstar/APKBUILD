@@ -10,6 +10,7 @@ license="MIT"
 
 arch="x86_64"
 source="https://github.com/R2Northstar/Northstar/releases/download/v${pkgver}/Northstar.release.v${pkgver}.zip"
+#source="https://github.com/R2Northstar/Northstar/releases/download/v${pkgver}/Northstar.release.v${pkgver}.zip"
 
 check() {
 	ls "$srcdir"
