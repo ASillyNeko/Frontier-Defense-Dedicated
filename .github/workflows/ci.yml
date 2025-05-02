@@ -1,11 +1,13 @@
 name: ci
 
 on:
-  push:
-    paths:
-      - ".github/workflows/ci.yml"
-      - src/**
-      - scripts/mktag.sh
+  #push:
+    #paths:
+      #- ".github/workflows/ci.yml"
+      #- src/**
+      #- scripts/mktag.sh
+  schedule:
+    - cron: "0 0 * * 1,4"
 
 jobs:
   server-docker:
