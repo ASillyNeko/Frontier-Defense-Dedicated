@@ -22,6 +22,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Get latest commit timestamp
+        id: get_commit
+        run: |
+          COMMIT_TIME=$(curl -s https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/commits/main | jq -r '.commit.committer.date')
+          echo "Latest commit time: $COMMIT_TIME"
+          echo "commit_time=$COMMIT_TIME" >> $GITHUB_OUTPUT
+
+      - name: Check if commit is within the last hour
+        run: |
+          COMMIT_TIME="${{ steps.get_commit.outputs.commit_time }}"
+          COMMIT_UNIX=$(date -d "$COMMIT_TIME" +%s)
+          NOW_UNIX=$(date -u +%s)
+          DIFF=$((NOW_UNIX - COMMIT_UNIX))
+          echo "Seconds since last commit: $DIFF"
+          if [ "$DIFF" -le 3600 ]; then
+            echo "Recent commit found within the last hour."
+            exit 0
+          else
+            echo "No recent commit in the last hour."
+            exit 1
+          fi
+
       - id: img
         name: Generate image name
         run: name="$(echo "ghcr.io/${{github.repository_owner}}/frontier-defense-dedicated" | tr "[:upper:]" "[:lower:]")"; echo "${name}"; echo "name=${name}" >> $GITHUB_OUTPUT
