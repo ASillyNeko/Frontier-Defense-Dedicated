@@ -26,6 +26,7 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/northstar"
 	cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
 }
+body=$(curl -s "https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/releases/tags/${pkgver}" | jq -r '.body')
 sha512sums="
-$(curl -s "https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/releases/tags/${pkgver}" | jq -r '.body')  Northstar.release.v$pkgver.zip
+$(echo "$body" | grep -oE '[a-f0-9]{128}')  Northstar.release.v$pkgver.zip
 "
