@@ -51,6 +51,7 @@ jobs:
             echo "recent=false" >> $GITHUB_OUTPUT
             echo "No recent release in the last hour."
             exit 1
+          fi
 
       - id: img
         name: Generate image name
