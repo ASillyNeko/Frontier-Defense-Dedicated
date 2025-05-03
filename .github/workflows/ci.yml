@@ -33,7 +33,6 @@ jobs:
       - name: Check if published within the last hour
         id: check_time
         run: |
-          shoulddothing = true
           PUBLISHED_AT=$(cat published_at.txt)
           # Convert published time and now to Unix timestamps
           PUBLISHED_TS=$(date -d "$PUBLISHED_AT" +%s)
@@ -51,7 +50,6 @@ jobs:
           else
             echo "recent=false" >> $GITHUB_OUTPUT
             echo "No recent release in the last hour."
-            shoulddothing = false
           fi
 
       - id: img
@@ -77,7 +75,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: src
-          push: shoulddothing
+          push: recent
           tags: ${{steps.tags.outputs.tags}}
           cache-from: type=gha
           cache-to: type=gha,mode=max
