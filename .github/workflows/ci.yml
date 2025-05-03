@@ -75,7 +75,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: src
-          push: recent
+          push: if [ "$DIFF" -le 3600 ]
           tags: ${{steps.tags.outputs.tags}}
           cache-from: type=gha
           cache-to: type=gha,mode=max
