@@ -30,7 +30,7 @@ jobs:
           jq -r .published_at release.json > published_at.txt
           echo "Published at: $(cat published_at.txt)"
 
-      - name: Check if published within the last hour
+      - name: Check if published within the last 8 hours
         id: check_time
         run: |
           PUBLISHED_AT=$(cat published_at.txt)
