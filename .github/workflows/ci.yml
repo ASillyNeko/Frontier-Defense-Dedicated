@@ -7,7 +7,7 @@ on:
       #- src/**
       #- scripts/mktag.sh
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */4 * * *'
 
 jobs:
   server-docker:
@@ -44,7 +44,7 @@ jobs:
           echo "Published: $PUBLISHED_AT"
           echo "Time difference: $DIFF seconds"
 
-          if [ "$DIFF" -le 3600 ]; then
+          if [ "$DIFF" -le 14400 ]; then
             echo "recent=true" >> $GITHUB_OUTPUT
             echo "A release was published within the last hour."
           else
