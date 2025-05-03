@@ -39,10 +39,6 @@ jobs:
           if [ "$DIFF" -le 3600 ]; then
             echo "Recent commit found within the last hour."
             exit 0
-          else
-            echo "No recent commit in the last hour."
-            exit 1
-          fi
 
       - id: img
         name: Generate image name
