@@ -48,6 +48,7 @@ jobs:
             echo "recent=true" >> $GITHUB_OUTPUT
             echo "A release was published within the last hour."
             exit 1
+          else
 
       - id: img
         name: Generate image name
