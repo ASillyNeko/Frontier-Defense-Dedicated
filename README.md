@@ -2,7 +2,7 @@
 
 **Docker image for [Frontier Defense](https://github.com/Zanieon/NorthstarMods/tree/gamemode_fd_experimental).** <a href="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
 
-[`ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest`](https://ghcr.io/NekoUwUGamerfnf/frontier-defense-dedicated)
+[`ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest`](https://ghcr.io/nekouwugamerfnf/frontier-defense-dedicated)
 
 ## Features
 
