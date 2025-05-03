@@ -23,23 +23,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Get latest commit timestamp
-        id: get_commit
+      - name: Fetch latest release publish time
+        id: fetch_release
         run: |
-          COMMIT_TIME=$(curl -s https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/commits/main | jq -r '.commit.committer.date')
-          echo "Latest commit time: $COMMIT_TIME"
-          echo "commit_time=$COMMIT_TIME" >> $GITHUB_OUTPUT
+          curl -s https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/releases/latest > release.json
+          jq -r .published_at release.json > published_at.txt
+          echo "Published at: $(cat published_at.txt)"
 
-      - name: Check if commit is within the last hour
+      - name: Check if published within the last hour
+        id: check_time
         run: |
-          COMMIT_TIME="${{ steps.get_commit.outputs.commit_time }}"
-          COMMIT_UNIX=$(date -d "$COMMIT_TIME" +%s)
-          NOW_UNIX=$(date -u +%s)
-          DIFF=$((NOW_UNIX - COMMIT_UNIX))
-          echo "Seconds since last commit: $DIFF"
+          PUBLISHED_AT=$(cat published_at.txt)
+          # Convert published time and now to Unix timestamps
+          PUBLISHED_TS=$(date -d "$PUBLISHED_AT" +%s)
+          NOW_TS=$(date -u +%s)
+
+          DIFF=$((NOW_TS - PUBLISHED_TS))
+
+          echo "Now: $(date -u)"
+          echo "Published: $PUBLISHED_AT"
+          echo "Time difference: $DIFF seconds"
+
           if [ "$DIFF" -le 3600 ]; then
-            echo "Recent commit found within the last hour."
-            exit 0
+            echo "recent=true" >> $GITHUB_OUTPUT
+            echo "A release was published within the last hour."
+            exit 1
 
       - id: img
         name: Generate image name
