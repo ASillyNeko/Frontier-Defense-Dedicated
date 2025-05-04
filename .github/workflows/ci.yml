@@ -46,10 +46,10 @@ jobs:
 
           if [ "$DIFF" -le 28800 ]; then
             echo "recent=true" >> $GITHUB_OUTPUT
-            echo "A release was published within the last 8 hour."
+            echo "A release was published within the last 8 hours."
           else
             echo "recent=false" >> $GITHUB_OUTPUT
-            echo "No recent release in the last hour."
+            echo "No recent release in the last 8 hours."
           fi
 
       - id: img
