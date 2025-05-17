@@ -1,11 +1,6 @@
 name: ci
 
 on:
-  #push:
-    #paths:
-      #- ".github/workflows/ci.yml"
-      #- src/**
-      #- scripts/mktag.sh
   schedule:
     - cron: '0 */1 * * *'
 
