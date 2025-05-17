@@ -11,7 +11,7 @@ on:
 
 jobs:
   server-docker:
-    runs-on: ubuntu-latest
+    runs-on: nekoserver
     permissions:
       actions: read
       contents: read
