@@ -7,7 +7,8 @@ on:
 
 jobs:
   server-docker:
-    runs-on: nekoserver
+    #runs-on: nekoserver
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
