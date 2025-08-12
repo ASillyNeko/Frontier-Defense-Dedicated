@@ -135,7 +135,7 @@ build() {
 		--disable-api_ms_win_shell_shellfolders_l1_1_0 --disable-apphelp --disable-appwiz_cpl --disable-atl --disable-atl110 --disable-atl80 --disable-atl90 \
 		--disable-atlthunk --disable-atmlib --disable-authz --disable-avrt --disable-bluetoothapis --disable-browseui --disable-bthprops_cpl \
 		--disable-cabinet --disable-capi2032 --disable-cards --disable-cdosys --disable-cfgmgr32 --disable-clusapi --disable-comcat --disable-compstui \
-		--disable-comsvcs --disable-connect --disable-credui --disable-crtdll --disable-ctapi32 \
+		--disable-comsvcs --disable-connect --disable-credui --disable-ctapi32 \
 		--disable-ctl3d32 --disable-d2d1 --disable-d3d10 --disable-d3d10_1 --disable-d3d10core --disable-d3d11 --disable-d3d12 --disable-d3d8 \
 		--disable-d3d8thk --disable-d3d9 --disable-d3dcompiler_33 --disable-d3dcompiler_34 --disable-d3dcompiler_35 --disable-d3dcompiler_36 \
 		--disable-d3dcompiler_37 --disable-d3dcompiler_38 --disable-d3dcompiler_39 --disable-d3dcompiler_40 --disable-d3dcompiler_41 --disable-d3dcompiler_42 \
@@ -166,7 +166,7 @@ build() {
 		--disable-ext_ms_win_rtcore_gdi_rgn_l1_1_0 --disable-ext_ms_win_rtcore_ntuser_cursor_l1_1_0 --disable-ext_ms_win_rtcore_ntuser_dc_access_l1_1_0 \
 		--disable-ext_ms_win_rtcore_ntuser_dpi_l1_1_0 --disable-ext_ms_win_rtcore_ntuser_dpi_l1_2_0 --disable-ext_ms_win_rtcore_ntuser_rawinput_l1_1_0 \
 		--disable-ext_ms_win_rtcore_ntuser_syscolors_l1_1_0 --disable-ext_ms_win_rtcore_ntuser_sysparams_l1_1_0 --disable-ext_ms_win_security_credui_l1_1_0 \
-		--disable-ext_ms_win_security_cryptui_l1_1_0 --disable-ext_ms_win_shell_comctl32_init_l1_1_0 --disable-ext_ms_win_shell_comdlg32_l1_1_0 \
+		--disable-ext_ms_win_shell_comctl32_init_l1_1_0 --disable-ext_ms_win_shell_comdlg32_l1_1_0 \
 		--disable-ext_ms_win_shell_shell32_l1_2_0 --disable-ext_ms_win_uxtheme_themes_l1_1_0 --disable-faultrep --disable-feclient --disable-fltlib \
 		--disable-fntcache --disable-fontsub --disable-fusion --disable-fwpuclnt --disable-gameux --disable-gamingtcui --disable-gdiplus --disable-glu32 \
 		--disable-gphoto2_ds --disable-gpkcsp --disable-hal --disable-hlink --disable-hnetcfg --disable-iccvid --disable-icmp --disable-ieframe \
