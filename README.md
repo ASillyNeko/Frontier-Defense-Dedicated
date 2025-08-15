@@ -2,7 +2,7 @@
 
 **Docker image for [Frontier Defense](https://github.com/Zanieon/NorthstarMods/tree/gamemode_fd_experimental).** <a href="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/NekoUwUGamerfnf/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
 
-[`ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest`](https://ghcr.io/nekouwugamerfnf/frontier-defense-dedicated)
+[`ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tf2.0.11.0`](https://ghcr.io/nekouwugamerfnf/frontier-defense-dedicated)
 
 ## Features
 
@@ -23,7 +23,7 @@
 1.  Copy the game files to your server, optionally removing [unnecessary files](#qs-reduce-size) to reduce the size.
 2.  Start the container (replace `/path/to/titanfall2` with the patch from step 1):
     ```bash
-    docker run --rm --interactive --pull always --publish 8081:8081/tcp --publish 37015:37015/udp --mount "type=bind,source=/path/to/titanfall2,target=/mnt/titanfall,readonly" --env NS_SERVER_NAME="[YOUR-REGION] Your server name" ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest
+    docker run --rm --interactive --pull always --publish 8081:8081/tcp --publish 37015:37015/udp --mount "type=bind,source=/path/to/titanfall2,target=/mnt/titanfall,readonly" --env NS_SERVER_NAME="[YOUR-REGION] Your server name" ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tf2.0.11.0
     ```
 
 ## Versioning
@@ -463,7 +463,7 @@ version: "3.9"
 
 services:
   northstar1:
-    image: ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest
+    image: ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tf2.0.11.0
     pull_policy: always
     environment:
       - NS_PORT=37015
@@ -499,7 +499,7 @@ x-logging:
 services:
   northstar1:
     << : *logging
-    image: ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tflatest
+    image: ghcr.io/nekouwugamerfnf/frontier-defense-dedicated:1-tf2.0.11.0
     pull_policy: always
     environment:
       - NS_PORT=37015
