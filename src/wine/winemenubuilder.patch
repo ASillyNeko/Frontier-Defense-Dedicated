@@ -1,9 +1,6 @@
 --- a/dlls/shell32/shelllink.c
 +++ b/dlls/shell32/shelllink.c
-@@ -299,26 +299,5 @@
- 
- BOOL run_winemenubuilder( const WCHAR *args )
- {
+@@ -301,26 +301,1 @@
 -    STARTUPINFOW si;
 -    PROCESS_INFORMATION pi;
 -    BOOL ret;
@@ -35,6 +32,3 @@
 -    wine_buffer_free( &buffer );
 -    return ret;
 +    return TRUE;
- }
- 
- static BOOL StartLinkProcessor( LPCOLESTR szLink )
