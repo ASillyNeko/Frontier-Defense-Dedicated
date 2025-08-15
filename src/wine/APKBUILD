@@ -13,18 +13,11 @@ subpackages="$pkgname-dev $pkgname-doc"
 depends_dev="$pkgname perl"
 makedepends="autoconf automake bison flex gnutls-dev libxi-dev mingw-w64-gcc mingw-w64-binutils linux-headers"
 
-# note: I've disabled the CreateWindow patch (which was to remove the need for
-# X11 to run the dedicated server) since it seems to cause time to slow down
-# in-game (possibly caused by the 6+ repeated calls to PeekMessage for the
-# window handle in-between ticks). This will need more debugging later.
-
 options="textrels !check"
 source="https://dl.winehq.org/wine/source/9.0/wine-$pkgver.tar.xz
-	rpath.patch
 	winemenubuilder.patch
 	ws2siobacklogquery.patch
 	"
-#	createwindow.patch
 
 builddir="$srcdir/wine-$pkgver"
 
@@ -34,7 +27,7 @@ build() {
 		x86_64) _win64=--enable-win64;;
 		x86) _no_pie="-no-pie";;
 	esac
-	./configure \
+	LDFLAGS="$LDFLAGS -Wl,-rpath,'\$\$ORIGIN'" ./configure \
 		--build=$CBUILD \
 		--host=$CHOST \
 		--prefix=/usr \
@@ -207,51 +200,7 @@ build() {
 		--disable-xaudio2_1 --disable-xaudio2_2 --disable-xaudio2_3 --disable-xaudio2_4 --disable-xaudio2_5 --disable-xaudio2_6 --disable-xaudio2_7 \
 		--disable-xaudio2_8 --disable-xaudio2_9 --disable-xinput1_1 --disable-xinput1_2 --disable-xinput1_4 --disable-xmllite --disable-xolehlp \
 		--disable-xpsprint --disable-xpssvcs
-		#
-		## note: first iteration was done with ghcr.io/pg9182/northstar-dedicated:1.20220116.gite7a0ed9-tf2.0.11.0-ns1.4.0 (i.e. a mostly vanilla wine 6.23 build)
-		## libs_wineprefix=activeds advapi32 advpack atl100 avicap32 bcrypt cng combase comctl32 comdlg32 conhost crypt32 cryptdlg cryptnet cryptui devenum dnsapi dsound explorer fltmgr gdi32 hh hidclass hidparse http ieframe iexplore imaadp32 imm32 iphlpapi kernel32 kernelbase ksecdd l3codeca light mlang mofcomp mountmgr mp3dmod mpr msacm32 msado15 msadp32 msdaps msdasql msdmo msg711 msgsm32 msisip msvcrt msvfw32 msxml msxml2 msxml3 msxml4 msxml6 ndis netio newdev notepad nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 oledb32 powershell propsys qcap qedit quartz reg regedit rpcrt4 rsaenh rundll32 sapi scsiport sechost services setupapi shcore shdocvw shell32 shlwapi start tdi tzres ucrtbase urlmon usbd user32 userenv uxtheme version wbemdisp wbemprox win32u windows windowscodecs wineboot winebus winedevice winehid winemenubuilder wineps winevulkan winex11 winexinput wininet winmm winspool wintrust wmic wmiutils wmplayer wordpad ws2_32
-		## libs_nsdedi=actxprxy advapi32 api-ms-win-crt-convert-l1-1-0 api-ms-win-crt-environment-l1-1-0 api-ms-win-crt-filesystem-l1-1-0 api-ms-win-crt-heap-l1-1-0 api-ms-win-crt-locale-l1-1-0 api-ms-win-crt-math-l1-1-0 api-ms-win-crt-runtime-l1-1-0 api-ms-win-crt-stdio-l1-1-0 api-ms-win-crt-string-l1-1-0 api-ms-win-crt-time-l1-1-0 api-ms-win-crt-utility-l1-1-0 avifil32 bcrypt combase comctl32 concrt140 conhost crypt32 dbghelp dnsapi dsound explorer gdi32 hid hidclass hidparse imm32 iphlpapi kerberos kernel32 kernelbase mmdevapi mountmgr msacm32 msv1_0 msvcp110 msvcp140 msvcr110 msvcrt msvfw32 ndis netapi32 normaliz nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 opengl32 plugplay propsys psapi rpcrt4 rpcss rsaenh schannel sechost secur32 services setupapi shcore shell32 shlwapi svchost tzres ucrtbase user32 userenv uxtheme vcruntime140 vcruntime140_1 version wevtsvc win32u windowscodecs wineboot winebus winedevice winehid winemenubuilder winex11 winmm wldap32 ws2_32 wsock32 xinput1_3
-		## https://gist.github.com/pg9182/f4d66fe9fb1b0fa3f1c0a903268979f4
-		## the additional disables were mostly based on removing obviously unused programs
-		#
-		## current iteration is on ghcr.io/pg9182/northstar-dedicated:1.20220117.git5ce2886-tf2.0.11.0-ns1.4.0 (which has the reduced libs based on the stuff above; see the commits after that one)
-		## libs_wineprefix=activeds advapi32 advpack atl100 avicap32 bcrypt cng combase comctl32 comdlg32 crypt32 cryptdlg cryptnet cryptui devenum dnsapi dsound explorer fltmgr gdi32 hh hidclass hidparse http imaadp32 imm32 iphlpapi kernel32 kernelbase ksecdd l3codeca light mlang mofcomp mountmgr mp3dmod mpr msacm32 msado15 msadp32 msdaps msdasql msdmo msg711 msgsm32 msisip msvcrt msvfw32 msxml msxml2 msxml3 msxml4 msxml6 ndis netio newdev notepad nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 oledb32 propsys qcap qedit quartz reg regedit rpcrt4 rsaenh rundll32 sapi scsiport sechost services setupapi shcore shdocvw shell32 shlwapi start tdi tzres ucrtbase urlmon usbd user32 userenv uxtheme version wbemdisp wbemprox win32u windows windowscodecs wineboot winebus winedevice winehid wineps winevulkan winex11 winexinput wininet winmm winspool wintrust wmic wmiutils ws2_32
-		## libs_nsdedi=actxprxy advapi32 api-ms-win-crt-convert-l1-1-0 api-ms-win-crt-environment-l1-1-0 api-ms-win-crt-filesystem-l1-1-0 api-ms-win-crt-heap-l1-1-0 api-ms-win-crt-locale-l1-1-0 api-ms-win-crt-math-l1-1-0 api-ms-win-crt-runtime-l1-1-0 api-ms-win-crt-stdio-l1-1-0 api-ms-win-crt-string-l1-1-0 api-ms-win-crt-time-l1-1-0 api-ms-win-crt-utility-l1-1-0 avifil32 bcrypt combase comctl32 concrt140 conhost crypt32 dbghelp dnsapi dsound explorer gdi32 hid hidclass hidparse imm32 iphlpapi kerberos kernel32 kernelbase mmdevapi mountmgr msacm32 msv1_0 msvcp110 msvcp140 msvcr110 msvcrt msvfw32 ndis netapi32 normaliz nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 opengl32 plugplay psapi rpcrt4 rpcss rsaenh schannel sechost secur32 services setupapi shcore shell32 shlwapi svchost tzres ucrtbase user32 userenv uxtheme vcruntime140 vcruntime140_1 version wevtsvc win32u wineboot winebus winedevice winehid winex11 winmm wldap32 ws2_32 wsock32 xinput1_3
-		## https://gist.github.com/pg9182/9cdc3e8fe52aafc137d7f114b99fa420
-		## the additional disables were based on manual inspection of dlls only loaded twice during wineprefix setup and by manually checking for thirdparty libs not referenced anymore due to the removals (I'm keeping those --without flags separate since they only work if we're disabling some of the dlls)
-		#
-		## 2022/10/03 (ns > 1.9.6) - add back xinput_9_1_0 for the xinput aslr fixes
-		#
-		# ctr="$(docker run --detach --tty --rm -e NS_SERVER_NAME=test ... --entrypoint /bin/ash ghcr.io/pg9182/northstar-dedicated:1.20220117.git5ce2886-tf2.0.11.0-ns1.4.0)"
-		# docker exec "$ctr" sudo apk add inotify-tools
-		# docker exec "$ctr" rm -rf /home/northstar/.wine
-		# docker exec "$ctr" inotifywait -mr /usr/lib/wine/ > inotify.wineprefix.log &
-		# docker exec "$ctr" /usr/libexec/nsdedi __wineprefix__
-		# docker exec "$ctr" killall inotifywait
-		# docker exec "$ctr" inotifywait -mr /usr/lib/wine/ > inotify.nsdedi.log &
-		# docker exec -it "$ctr" /usr/libexec/nsdedi "    " # ctrl-c it after it finishes loading and registering to the master server
-		# docker exec "$ctr" killall inotifywait
-		# docker kill "$ctr"
-		#
-		# libs_wineprefix="$(cat inotify.wineprefix.log | grep "^/usr/lib/wine/x86_64-windows/" | grep " CLOSE_NOWRITE,CLOSE " | cut -d " " -f3 | cut -d. -f1 | sort | uniq -c | grep -v "\s1 " | rev | cut -d " " -f1 | rev | xargs echo)"
-		# libs_nsdedi="$(cat inotify.nsdedi.log | grep "^/usr/lib/wine/x86_64-windows/" | grep " CLOSE_NOWRITE,CLOSE " | cut -d " " -f3 | cut -d. -f1 | sort | uniq | xargs echo)"
-		#
-		# pushd src/wine
-		# for x in programs/* dlls/*; do
-		#     needed=no
-		#     for lib in winecrt0 $libs_wineprefix $libs_nsdedi winedbg cmd winecfg winepath taskkill tasklist mscvr api-ms-win-core-; do
-		#         if [[ $x == *"/$lib"* ]]; then
-		#             needed=yes
-		#         fi
-		#     done
-		#     if [[ $needed == "no" ]]; then
-		#         echo $x
-		#     fi
-		# done |
-		# xargs -i@ grep -F "wine_fn_config_makefile @ enable_" configure | grep -Fv enable_win16 | sed 's/^.*enable_/--disable-/' |
-		# xargs echo | fold -sw150 | sed 's/$/\\/g'
-		# popd
-		#
+
 	make LDFLAGS="$LDFLAGS $_no_pie" \
 		tools/widl/widl \
 		tools/winebuild/winebuild \
@@ -298,9 +247,6 @@ doc() {
 
 sha512sums="
 838daf2c4581f83f8573b988036f517d57b84894b090a2a17433255d6d044dfa880e6724cdb83082a36c333df9d2083ab68ae53927622a620edd59f33462ada4  wine-9.0.tar.xz
-1f023ec35610d7f39eee5ee8e53abf8905509dd37513a1ec00f498e5e28890c60555d43daeae28b806879050b3422575f3552fa338177e923b0471c89418a607  rpath.patch
 eaaa991510d6de7f33ea8d81954737ab4a18f40675f3fa5822367fe40e439880246209d913f646e80e1120d59fcedaf97d069cf1b203c0d7d032bc8b07faa29d  winemenubuilder.patch
 bf1630e4f8aab6b220eb95beafe2891549bb6d7be17aed9bbd1269409fd589f05fc9b68c123d58cdfc5eff60d53518b232c59b6c4648b7c6e36a2416f4913d33  ws2siobacklogquery.patch
-caa47044e6caa5edb3f55596bfcc96c0e6166a7d84bc66e13813a1665e27b15524ac4db3bc354d89491d0ba2e8356075141fc21e21662d1469843699e9088da1  wine-mr-1034.patch
 "
-#996a6fcf19875b170eb51ccd6f4e5ec32f77326a7ab8c6227c0fa4e3acacf9330efeafdb77de17a176e73d1ec7f58cac3293302833284ce805b6b5e751f9615e  createwindow.patch
