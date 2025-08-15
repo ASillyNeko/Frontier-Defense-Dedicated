@@ -37,3 +37,4 @@
  }
  
  static HRESULT WINAPI IPersistFile_fnLoad(IPersistFile* iface, LPCOLESTR pszFileName, DWORD dwMode)
+
