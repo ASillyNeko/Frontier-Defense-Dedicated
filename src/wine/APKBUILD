@@ -23,7 +23,6 @@ source="https://dl.winehq.org/wine/source/9.0/wine-$pkgver.tar.xz
 	rpath.patch
 	winemenubuilder.patch
 	ws2siobacklogquery.patch
-	wine-mr-1034.patch
 	"
 #	createwindow.patch
 
