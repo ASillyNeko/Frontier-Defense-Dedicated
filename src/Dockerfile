@@ -48,27 +48,6 @@ RUN adduser -D northstar && \
 USER northstar
 
 ENV WINEPREFIX="/home/northstar/.wine"
-RUN /usr/bin/nswrap-wineprefix && \
-    for x in \
-        /home/northstar/.wine/drive_c/"Program Files"/"Common Files"/System/*/* \
-        /home/northstar/.wine/drive_c/windows/* \
-        /home/northstar/.wine/drive_c/windows/system32/* \
-        /home/northstar/.wine/drive_c/windows/system32/drivers/* \
-        /home/northstar/.wine/drive_c/windows/system32/wbem/* \
-        /home/northstar/.wine/drive_c/windows/system32/spool/drivers/x64/*/* \
-        /home/northstar/.wine/drive_c/windows/system32/Speech/common/* \
-        /home/northstar/.wine/drive_c/windows/winsxs/*/* \
-    ; do \
-        orig="/usr/lib/wine/x86_64-windows/$(basename "$x")"; \
-        if cmp -s "$orig" "$x"; then ln -sf "$orig" "$x"; fi; \
-    done && \
-    for x in \
-        /home/northstar/.wine/drive_c/windows/globalization/sorting/*.nls \
-        /home/northstar/.wine/drive_c/windows/system32/*.nls \
-    ; do \
-        orig="/usr/share/wine/nls/$(basename "$x")"; \
-        if cmp -s "$orig" "$x"; then ln -sf "$orig" "$x"; fi; \
-    done
 EXPOSE 8081/tcp
 EXPOSE 37015/udp
 ENTRYPOINT ["/usr/libexec/nsdedi"]
