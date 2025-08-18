@@ -23,7 +23,29 @@ source="https://dl.winehq.org/wine/source/10.0/wine-$pkgver.tar.xz"
 
 builddir="$srcdir/wine-$pkgver"
 
-package() {}
+package() {
+	install -Dm755 tools/wineapploader \
+
+		"$pkgdir"/usr/bin/wineapploader
+
+
+
+	local file
+
+	for file in msiexec notepad regedit regsvr32 wineboot \
+
+		winecfg wineconsole winefile winemine winepath
+
+	do
+
+		if rm "$pkgdir"/usr/bin/$file; then
+
+			ln -sf /usr/bin/wineapploader "$pkgdir"/usr/bin/$file
+
+		fi
+
+	done
+}
 
 dev() {
 	default_dev
