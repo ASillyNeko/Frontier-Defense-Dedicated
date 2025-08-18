@@ -23,6 +23,8 @@ source="https://dl.winehq.org/wine/source/10.0/wine-$pkgver.tar.xz"
 
 builddir="$srcdir/wine-$pkgver"
 
+package() {}
+
 dev() {
 	default_dev
 
