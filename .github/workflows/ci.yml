@@ -2,8 +2,6 @@ name: ci
 
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: '0 */1 * * *'
 
 jobs:
   server-docker:
@@ -18,36 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Fetch latest release publish time
-        id: fetch_release
-        run: |
-          curl -s https://api.github.com/repos/NekoUwUGamerfnf/Zanieon-Frontier-Defense/releases/latest > release.json
-          jq -r .published_at release.json > published_at.txt
-          echo "Published at: $(cat published_at.txt)"
-
-      - name: Check if published within the last hour
-        id: check_time
-        run: |
-          PUBLISHED_AT=$(cat published_at.txt)
-          # Convert published time and now to Unix timestamps
-          PUBLISHED_TS=$(date -d "$PUBLISHED_AT" +%s)
-          NOW_TS=$(date -u +%s)
-
-          DIFF=$((NOW_TS - PUBLISHED_TS))
-
-          echo "Now: $(date -u)"
-          echo "Published: $PUBLISHED_AT"
-          echo "Time difference: $DIFF seconds"
-
-          if [ "$DIFF" -le 3600 ]; then
-            echo "recent=true" >> $GITHUB_OUTPUT
-            #echo "A release was published within the last hour."
-          else
-            echo "recent=true" >> $GITHUB_OUTPUT
-            #echo "recent=false" >> $GITHUB_OUTPUT
-            #echo "No recent release in the last hour."
-          fi
 
       - id: img
         name: Generate image name
