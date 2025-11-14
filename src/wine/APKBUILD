@@ -34,74 +34,113 @@ build() {
 		x86_64) _win64=--enable-win64;;
 		x86) _no_pie="-no-pie";;
 	esac
-	./configure \
-	    --build=$CBUILD \
-	    --host=$CHOST \
-	    --prefix=/usr \
-	    --libdir=/usr/lib \
-	    --sysconfdir=/etc \
-	    --localstatedir=/var \
-	    --without-alsa \
-	    --without-capi \
-	    --without-coreaudio \
-	    --without-cups \
-	    --without-dbus \
-	    --without-fontconfig \
-	    --without-freetype \
-	    --without-gettext \
-	    --with-gnutls \
-	    --without-gphoto \
-	    --without-gssapi \
-	    --without-gstreamer \
-	    --without-inotify \
-	    --without-krb5 \
-	    --without-ldap \
-	    --with-mingw \
-	    --without-netapi \
-	    --without-openal \
-	    --without-opencl \
-	    --without-opengl \
-	    --without-osmesa \
-	    --without-oss \
-	    --without-pcap \
-	    --without-pulse \
-	    --without-sane \
-	    --without-sdl \
-	    --without-udev \
-	    --without-usb \
-	    --without-v4l2 \
-	    --without-vkd3d \
-	    --without-vulkan \
-	    --with-x \
-	    --without-xcomposite \
-	    --without-xcursor \
-	    --without-xfixes \
-	    --without-xinerama \
-	    --with-xinput2 \
-	    $_win64 \
-	    \
-	    --disable-tests --disable-notepad --disable-msxml --disable-msxml2 --disable-msxml3 --disable-msxml4 \
-	    --disable-msxml5 --disable-msxml6 --disable-msado15 --disable-msadp32 --disable-msdaps --disable-msdasql \
-	    --disable-quartz --disable-sapi --disable-scsiport --disable-usbd --disable-wineps_drv --disable-winspool_drv \
-	    --disable-mp3dmod --disable-l3codeca --disable-winedbg \
-	    \
-	    --without-xml --without-xslt \
-	    --disable-xml2 --disable-xslt \
-	    \
-	    --enable-ole --enable-oleaut32 \
-	    --enable-stdole2_tlb --enable-stdole32_tlb \
-	    \
-	    --disable-arp --disable-aspnet_regiis --disable-attrib --disable-cabarc --disable-cacls --disable-chcp_com --disable-clock --disable-control \
-	    --disable-cscript --disable-dism --disable-dplaysvr --disable-dpnsvr --disable-dpvsetup --disable-dxdiag --disable-eject --disable-expand \
-	    --disable-extrac32 --disable-fc --disable-find --disable-findstr --disable-fsutil --disable-hostname --disable-icacls --disable-icinfo \
-	    --disable-iexplore --disable-ipconfig --disable-lodctr --disable-mshta --disable-msidb --disable-msiexec --disable-msinfo32 --disable-net \
-	    --disable-netsh --disable-netstat --disable-ngen --disable-oleview --disable-ping --disable-powershell --disable-presentationfontcache \
-	    --disable-progman --disable-robocopy --disable-sc --disable-schtasks --disable-sdbinst --disable-secedit --disable-servicemodelreg --disable-shutdown \
-	    --disable-spoolsv --disable-subst --disable-systeminfo --disable-taskmgr --disable-termsv --disable-uninstaller --disable-unlodctr --disable-view \
-	    --disable-wevtutil --disable-where --disable-whoami --disable-winebrowser --disable-wineconsole --disable-winefile --disable-winemenubuilder \
-	    --disable-winemine --disable-winemsibuilder --disable-winetest --disable-winhlp32 --disable-winmgmt --disable-winver --disable-wmplayer \
-	    --disable-wordpad --disable-write --disable-wscript --disable-wuauserv --disable-wusa --disable-xcopy --disable-acledit --disable-aclui \
-	    --disable-adsldp --disable-adsldpc --disable-amsi --disable-amstream
+	./configure 
+	--build=$CBUILD 
+	--host=$CHOST 
+	--prefix=/usr 
+	--libdir=/usr/lib 
+	--sysconfdir=/etc 
+	--localstatedir=/var 
+	--without-alsa 
+	--without-capi 
+	--without-coreaudio 
+	--without-cups 
+	--without-dbus 
+	--without-fontconfig 
+	--without-freetype 
+	--without-gettext 
+	--with-gnutls 
+	--without-gphoto 
+	--without-gssapi 
+	--without-gstreamer 
+	--without-inotify 
+	--without-krb5 
+	--without-ldap 
+	--with-mingw 
+	--without-netapi 
+	--without-openal 
+	--without-opencl 
+	--without-opengl 
+	--without-osmesa 
+	--without-oss 
+	--without-pcap 
+	--without-pulse 
+	--without-sane 
+	--without-sdl 
+	--without-udev 
+	--without-usb 
+	--without-v4l2 
+	--without-vkd3d 
+	--without-vulkan 
+	--with-x 
+	--without-xcomposite 
+	--without-xcursor 
+	--without-xfixes 
+	--without-xinerama 
+	--without-xinput 
+	--with-xinput2 
+	--without-xrandr 
+	--without-xrender 
+	--without-xshape 
+	--without-xshm 
+	--without-xxf86vm 
+	$win64 
+	
+	--disable-tests --disable-notepad --disable-msxml --disable-msxml2 --disable-msxml3 --disable-msxml4 
+	--disable-msxml5 --disable-msxml6 --disable-msado15 --disable-msadp32 --disable-msdaps --disable-msdasql 
+	--disable-quartz --disable-sapi --disable-scsiport --disable-usbd --disable-wineps_drv --disable-winspool_drv 
+	--disable-mp3dmod --disable-l3codeca --disable-winedbg 
+	
+	--without-xml --without-xslt 
+	--disable-xml2 --disable-xslt 
+	
+	--disable-arp --disable-aspnet_regiis --disable-attrib --disable-cabarc --disable-cacls --disable-chcp_com --disable-clock --disable-control 
+	--disable-cscript --disable-dism --disable-dplaysvr --disable-dpnsvr --disable-dpvsetup --disable-dxdiag --disable-eject --disable-expand 
+	--disable-extrac32 --disable-fc --disable-find --disable-findstr --disable-fsutil --disable-hostname --disable-icacls --disable-icinfo 
+	--disable-iexplore --disable-ipconfig --disable-lodctr --disable-mshta --disable-msidb --disable-msiexec --disable-msinfo32 --disable-net 
+	--disable-netsh --disable-netstat --disable-ngen --disable-oleview --disable-ping --disable-powershell --disable-presentationfontcache 
+	--disable-progman --disable-robocopy --disable-sc --disable-schtasks --disable-sdbinst --disable-secedit --disable-servicemodelreg --disable-shutdown 
+	--disable-spoolsv --disable-subst --disable-systeminfo --disable-taskmgr --disable-termsv --disable-uninstaller --disable-unlodctr --disable-view 
+	--disable-wevtutil --disable-where --disable-whoami --disable-winebrowser --disable-wineconsole --disable-winefile --disable-winemenubuilder 
+	--disable-winemine --disable-winemsibuilder --disable-winetest --disable-winhlp32 --disable-winmgmt --disable-winver --disable-wmplayer 
+	--disable-wordpad --disable-write --disable-wscript --disable-wuauserv --disable-wusa --disable-xcopy --disable-acledit --disable-aclui 
+	--disable-adsldp --disable-adsldpc --disable-amsi --disable-amstream --disable-api_ms_win_appmodel_identity_l1_1_0 
+	--disable-api_ms_win_appmodel_runtime_l1_1_0 --disable-api_ms_win_appmodel_runtime_l1_1_1 --disable-api_ms_win_appmodel_runtime_l1_1_2 
+	--disable-api_ms_win_crt_conio_l1_1_0 --disable-api_ms_win_crt_multibyte_l1_1_0 --disable-api_ms_win_crt_private_l1_1_0 
+	--disable-api_ms_win_crt_process_l1_1_0 --disable-api_ms_win_devices_config_l1_1_0 --disable-api_ms_win_devices_config_l1_1_1 
+	--disable-api_ms_win_devices_query_l1_1_1 --disable-api_ms_win_downlevel_advapi32_l1_1_0 --disable-api_ms_win_downlevel_advapi32_l2_1_0 
+	--disable-api_ms_win_downlevel_kernel32_l2_1_0 --disable-api_ms_win_downlevel_normaliz_l1_1_0 --disable-api_ms_win_downlevel_ole32_l1_1_0 
+	--disable-api_ms_win_downlevel_shell32_l1_1_0 --disable-api_ms_win_downlevel_shlwapi_l1_1_0 --disable-api_ms_win_downlevel_shlwapi_l2_1_0 
+	--disable-api_ms_win_downlevel_user32_l1_1_0 --disable-api_ms_win_downlevel_version_l1_1_0 --disable-api_ms_win_dx_d3dkmt_l1_1_0 
+	--disable-api_ms_win_eventing_classicprovider_l1_1_0 --disable-api_ms_win_eventing_consumer_l1_1_0 --disable-api_ms_win_eventing_controller_l1_1_0 
+	--disable-api_ms_win_eventing_legacy_l1_1_0 --disable-api_ms_win_eventing_provider_l1_1_0 --disable-api_ms_win_eventlog_legacy_l1_1_0 
+	--disable-api_ms_win_gaming_tcui_l1_1_0 --disable-api_ms_win_gdi_dpiinfo_l1_1_0 --disable-api_ms_win_mm_joystick_l1_1_0 
+	--disable-api_ms_win_mm_misc_l1_1_1 --disable-api_ms_win_mm_mme_l1_1_0 --disable-api_ms_win_mm_time_l1_1_0 
+	--disable-api_ms_win_ntuser_dc_access_l1_1_0 --disable-api_ms_win_ntuser_rectangle_l1_1_0 --disable-api_ms_win_ntuser_sysparams_l1_1_0 
+	--disable-api_ms_win_perf_legacy_l1_1_0 --disable-api_ms_win_power_base_l1_1_0 --disable-api_ms_win_power_setting_l1_1_0 
+	--disable-api_ms_win_rtcore_ntuser_draw_l1_1_0 --disable-api_ms_win_rtcore_ntuser_private_l1_1_0 --disable-api_ms_win_rtcore_ntuser_private_l1_1_4 
+	--disable-api_ms_win_rtcore_ntuser_window_l1_1_0 --disable-api_ms_win_rtcore_ntuser_winevent_l1_1_0 
+	--disable-api_ms_win_rtcore_ntuser_wmpointer_l1_1_0 --disable-api_ms_win_rtcore_ntuser_wmpointer_l1_1_3 
+	--disable-api_ms_win_security_activedirectoryclient_l1_1_0 --disable-api_ms_win_security_audit_l1_1_1 --disable-api_ms_win_security_base_l1_1_0 
+	--disable-api_ms_win_security_base_l1_2_0 --disable-api_ms_win_security_base_private_l1_1_1 --disable-api_ms_win_security_credentials_l1_1_0 
+	--disable-api_ms_win_security_cryptoapi_l1_1_0 --disable-api_ms_win_security_grouppolicy_l1_1_0 --disable-api_ms_win_security_lsalookup_l1_1_0 
+	--disable-api_ms_win_security_lsalookup_l1_1_1 --disable-api_ms_win_security_lsalookup_l2_1_0 --disable-api_ms_win_security_lsalookup_l2_1_1 
+	--disable-api_ms_win_security_lsapolicy_l1_1_0 --disable-api_ms_win_security_provider_l1_1_0 --disable-api_ms_win_security_sddl_l1_1_0 
+	--disable-api_ms_win_security_systemfunctions_l1_1_0 --disable-api_ms_win_service_core_l1_1_0 --disable-api_ms_win_service_core_l1_1_1 
+	--disable-api_ms_win_service_management_l1_1_0 --disable-api_ms_win_service_management_l2_1_0 --disable-api_ms_win_service_private_l1_1_1 
+	--disable-api_ms_win_service_winsvc_l1_1_0 --disable-api_ms_win_service_winsvc_l1_2_0 --disable-api_ms_win_shcore_obsolete_l1_1_0 
+	--disable-api_ms_win_shcore_scaling_l1_1_0 --disable-api_ms_win_shcore_scaling_l1_1_1 --disable-api_ms_win_shcore_stream_l1_1_0 
+	--disable-api_ms_win_shcore_stream_winrt_l1_1_0 --disable-api_ms_win_shcore_thread_l1_1_0 --disable-api_ms_win_shell_shellcom_l1_1_0 
+	--disable-api_ms_win_shell_shellfolders_l1_1_0 --disable-apphelp --disable-appwiz_cpl --disable-atl --disable-atl110 --disable-atl80 --disable-atl90 
+	--disable-atlthunk --disable-atmlib --disable-authz --disable-avrt --disable-bluetoothapis --disable-browseui --disable-bthprops_cpl --disable-winebth 
+	--disable-cabinet --disable-capi2032 --disable-cards --disable-cdosys --disable-cfgmgr32 --disable-clusapi --disable-comcat --disable-compstui 
+	--disable-comsvcs --disable-connect --disable-credui --disable-crtdll --disable-cryptdll --disable-cryptext --disable-cryptsp --disable-ctapi32 
+	--disable-ctl3d32 --disable-d2d1 --disable-d3d10 --disable-d3d10_1 --disable-d3d10core --disable-d3d11 --disable-d3d12 --disable-d3d8 
+	--disable-d3d8thk --disable-d3d9 --disable-d3dcompiler_33 --disable-d3dcompiler_34 --disable-d3dcompiler_35 --disable-d3dcompiler_36 
+	--disable-d3dcompiler_37 --disable-d3dcompiler_38 --disable-d3dcompiler_39 --disable-d3dcompiler_40 --disable-d3dcompiler_41 --disable-d3dcompiler_42 
+	--disable-d3dcompiler_43 --disable-d3dcompiler_46 --disable-d3dcompiler_47 --disable-d3dim --disable-d3dim700 --disable-d3drm --disable-d3dx10_33 
+	--disable-d3dx10_34 --disable-d3dx10_35 --disable-d3dx10_36 --disable-d3dx10_37 --disable-d3dx10_38 --disable-d3dx10_39 --disable-d3dx10_40 
+	--disable-d3dx10_41 --disable-d3dx10_42 --disable-d3dx10_43 --disable-d3dx11_42 --disable-d3dx11_43 --disable-d3dx9_24 --disable-d3dx9_25
 		#
 		## note: first iteration was done with ghcr.io/pg9182/northstar-dedicated:1.20220116.gite7a0ed9-tf2.0.11.0-ns1.4.0 (i.e. a mostly vanilla wine 6.23 build)
 		## libs_wineprefix=activeds advapi32 advpack atl100 avicap32 bcrypt cng combase comctl32 comdlg32 conhost crypt32 cryptdlg cryptnet cryptui devenum dnsapi dsound explorer fltmgr gdi32 hh hidclass hidparse http ieframe iexplore imaadp32 imm32 iphlpapi kernel32 kernelbase ksecdd l3codeca light mlang mofcomp mountmgr mp3dmod mpr msacm32 msado15 msadp32 msdaps msdasql msdmo msg711 msgsm32 msisip msvcrt msvfw32 msxml msxml2 msxml3 msxml4 msxml6 ndis netio newdev notepad nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 oledb32 powershell propsys qcap qedit quartz reg regedit rpcrt4 rsaenh rundll32 sapi scsiport sechost services setupapi shcore shdocvw shell32 shlwapi start tdi tzres ucrtbase urlmon usbd user32 userenv uxtheme version wbemdisp wbemprox win32u windows windowscodecs wineboot winebus winedevice winehid winemenubuilder wineps winevulkan winex11 winexinput wininet winmm winspool wintrust wmic wmiutils wmplayer wordpad ws2_32
