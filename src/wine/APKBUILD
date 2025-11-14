@@ -140,7 +140,8 @@ build() {
 	--disable-d3dcompiler_37 --disable-d3dcompiler_38 --disable-d3dcompiler_39 --disable-d3dcompiler_40 --disable-d3dcompiler_41 --disable-d3dcompiler_42 
 	--disable-d3dcompiler_43 --disable-d3dcompiler_46 --disable-d3dcompiler_47 --disable-d3dim --disable-d3dim700 --disable-d3drm --disable-d3dx10_33 
 	--disable-d3dx10_34 --disable-d3dx10_35 --disable-d3dx10_36 --disable-d3dx10_37 --disable-d3dx10_38 --disable-d3dx10_39 --disable-d3dx10_40 
-	--disable-d3dx10_41 --disable-d3dx10_42 --disable-d3dx10_43 --disable-d3dx11_42 --disable-d3dx11_43 --disable-d3dx9_24 --disable-d3dx9_25
+	--disable-d3dx10_41 --disable-d3dx10_42 --disable-d3dx10_43 --disable-d3dx11_42 --disable-d3dx11_43 --disable-d3dx9_24 --disable-d3dx9_25 
+	--disable-d3dx9_26 --disable-d3dx9_27 --disable-d3dx9_28 --disable-d3dx9
 		#
 		## note: first iteration was done with ghcr.io/pg9182/northstar-dedicated:1.20220116.gite7a0ed9-tf2.0.11.0-ns1.4.0 (i.e. a mostly vanilla wine 6.23 build)
 		## libs_wineprefix=activeds advapi32 advpack atl100 avicap32 bcrypt cng combase comctl32 comdlg32 conhost crypt32 cryptdlg cryptnet cryptui devenum dnsapi dsound explorer fltmgr gdi32 hh hidclass hidparse http ieframe iexplore imaadp32 imm32 iphlpapi kernel32 kernelbase ksecdd l3codeca light mlang mofcomp mountmgr mp3dmod mpr msacm32 msado15 msadp32 msdaps msdasql msdmo msg711 msgsm32 msisip msvcrt msvfw32 msxml msxml2 msxml3 msxml4 msxml6 ndis netio newdev notepad nsi nsiproxy ntdll ntoskrnl ole32 oleaut32 oledb32 powershell propsys qcap qedit quartz reg regedit rpcrt4 rsaenh rundll32 sapi scsiport sechost services setupapi shcore shdocvw shell32 shlwapi start tdi tzres ucrtbase urlmon usbd user32 userenv uxtheme version wbemdisp wbemprox win32u windows windowscodecs wineboot winebus winedevice winehid winemenubuilder wineps winevulkan winex11 winexinput wininet winmm winspool wintrust wmic wmiutils wmplayer wordpad ws2_32
