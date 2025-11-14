@@ -32,15 +32,15 @@ build() {
     local _win64 _no_pie
     case "$CARCH" in
         x86_64) _win64=--enable-win64 ;;
-        x86)    _no_pie="-no-pie" ;;
+        x86)     _no_pie="-no-pie" ;;
     esac
-
     ./configure \
         --build="$CBUILD" \
         --host="$CHOST" \
         --prefix=/usr \
         --libdir=/usr/lib \
-        \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
         --without-alsa \
         --without-capi \
         --without-coreaudio \
@@ -48,15 +48,17 @@ build() {
         --without-dbus \
         --without-fontconfig \
         --without-freetype \
+        --without-gettext \
+        --with-gnutls \
         --without-gphoto \
         --without-gssapi \
         --without-gstreamer \
         --without-krb5 \
         --without-ldap \
+        --without-netapi \
         --without-openal \
         --without-opencl \
         --without-opengl \
-        --without-osmesa \
         --without-oss \
         --without-pcap \
         --without-pulse \
@@ -64,10 +66,8 @@ build() {
         --without-sdl \
         --without-udev \
         --without-usb \
-        --without-v4l2 \
         --without-vkd3d \
         --without-vulkan \
-        \
         --with-x \
         --without-xcomposite \
         --without-xcursor \
@@ -80,11 +80,21 @@ build() {
         --without-xshape \
         --without-xshm \
         --without-xxf86vm \
+        ${_win64} \
         \
-        --with-mingw \
-        $_win64
+        --disable-tests \
+        --disable-winedbg \
+        --disable-winemenubuilder \
+        \
+        --without-xml --without-xslt \
+        --disable-xml2 --disable-xslt
 
-    make LDFLAGS="$LDFLAGS $_no_pie"
+    make LDFLAGS="${LDFLAGS} ${_no_pie}" \
+         tools/widl/widl \
+         tools/winebuild/winebuild \
+         tools/winegcc/winegcc \
+         tools/wrc/wrc
+
     make
 }
 
