@@ -13,6 +13,10 @@ USER nsbuild
 RUN mkdir -p /nsbuild/src/main /nsbuild/packages/main && \
     abuild-keygen -ain
 
+FROM build AS build-wine
+COPY --chown=nsbuild:nsbuild ./wine/ /nsbuild/src/main/wine/
+RUN ulimit -n 1024; cd /nsbuild/src/main/wine && abuild -r
+
 FROM build AS build-northstar
 COPY --chown=nsbuild:nsbuild ./northstar/ /nsbuild/src/main/northstar/
 RUN ulimit -n 1024; cd /nsbuild/src/main/northstar && abuild -r
