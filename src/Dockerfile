@@ -3,7 +3,7 @@
 FROM alpine:3.23.0 AS base
 
 FROM base AS build
-RUN apk update && apk add alpine-sdk sudo
+RUN apk update && apk add alpine-sdk sudo curl
 RUN apk add jq
 RUN adduser -Dh /nsbuild nsbuild && \
     adduser nsbuild abuild && \
@@ -26,7 +26,7 @@ COPY --chown=nsbuild:nsbuild ./entrypoint/ /nsbuild/src/main/entrypoint/
 RUN ulimit -n 1024; cd /nsbuild/src/main/entrypoint && abuild -r
 
 FROM base
-RUN apk add --no-cache wine gnutls tzdata ca-certificates sudo xvfb curl
+RUN apk add --no-cache wine gnutls tzdata ca-certificates sudo xvfb
 RUN --mount=from=build-northstar,source=/nsbuild/packages/main/x86_64,target=/nsbuild/northstar \
     apk add --no-cache --allow-untrusted /nsbuild/northstar/*.apk
 RUN --mount=from=build-nswrap,source=/nsbuild/packages/main/x86_64,target=/nsbuild/nswrap \
