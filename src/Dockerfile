@@ -26,7 +26,7 @@ COPY --chown=nsbuild:nsbuild ./entrypoint/ /nsbuild/src/main/entrypoint/
 RUN ulimit -n 1024; cd /nsbuild/src/main/entrypoint && abuild -r
 
 FROM base
-RUN apk add --no-cache wine gnutls tzdata ca-certificates sudo xvfb
+RUN apk add --no-cache wine gnutls tzdata ca-certificates sudo xvfb curl
 RUN --mount=from=build-northstar,source=/nsbuild/packages/main/x86_64,target=/nsbuild/northstar \
     apk add --no-cache --allow-untrusted /nsbuild/northstar/*.apk
 RUN --mount=from=build-nswrap,source=/nsbuild/packages/main/x86_64,target=/nsbuild/nswrap \
