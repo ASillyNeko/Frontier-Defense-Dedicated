@@ -17,7 +17,7 @@ jobs:
 
       - id: img
         name: Generate image name
-        run: name="$(echo "ghcr.io/${{ github.repository_owner }}/frontier-defense-dedicated" | tr "[:upper:]" "[:lower:]")"; echo "${name}"; echo "name=${name}" >> $GITHUB_OUTPUT
+        run: name="$(echo "ghcr.io/${{ github.repository_owner }}/northstar-dedicated" | tr "[:upper:]" "[:lower:]")"; echo "${name}"; echo "name=${name}" >> $GITHUB_OUTPUT
 
       - id: tags
         name: Generate tags
