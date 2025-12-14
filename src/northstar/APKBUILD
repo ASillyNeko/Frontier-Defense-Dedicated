@@ -9,14 +9,11 @@ url="https://northstar.tf"
 license="MIT"
 
 arch="x86_64"
-source="https://github.com/ASillyNeko/Zanieon-Frontier-Defense/releases/download/v${pkgver}/Northstar.release.v${pkgver}.zip"
+source="https://github.com/ASillyNeko/Northstar-Launcher/releases/download/v${pkgver}/Northstar.release.v${pkgver}.zip"
 
 check() {
 	ls "$srcdir"
 	test -f "$srcdir/NorthstarLauncher.exe"
-	test -f "$srcdir/R2Northstar/mods/Northstar.CustomServers/mod/cfg/autoexec_ns_server.cfg"
-	test -d "$srcdir/R2Northstar/mods/Northstar.CustomServers/mod/maps/graphs"
-	test -d "$srcdir/R2Northstar/mods/Northstar.CustomServers/mod/maps/navmesh"
 	test -f "$srcdir/bin/x64_dedi/d3d11.dll"
 }
 
@@ -25,7 +22,7 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/northstar"
 	cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
 }
-body=$(curl -s "https://api.github.com/repos/ASillyNeko/Zanieon-Frontier-Defense/releases/tags/v${pkgver}" | jq -r '.body')
+body=$(curl -s "https://api.github.com/repos/ASillyNeko/Northstar-Launcher/releases/tags/v${pkgver}" | jq -r '.body')
 sha512sums="
 $(echo "$body" | grep -oE '[a-f0-9]{128}')  Northstar.release.v$pkgver.zip
 "
