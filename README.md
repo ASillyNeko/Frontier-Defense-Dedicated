@@ -459,8 +459,6 @@ The following sections provide example configuration for deploying the container
 Example configuration (simple):
 
 ```yml
-version: "3.9"
-
 services:
   northstar1:
     image: ghcr.io/asillyneko/northstar-dedicated:1-tf2.0.11.0
@@ -486,8 +484,6 @@ services:
 Example configuration (complex):
 
 ```yml
-version: "3.9"
-
 x-logging:
   &logging
   logging:
